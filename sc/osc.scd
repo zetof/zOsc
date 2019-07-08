@@ -1,5 +1,5 @@
-s.boot;
 (
+s.boot;
 
 SynthDef(\simple_osc, {
 	arg midinote = 69, vol = 0.1;
