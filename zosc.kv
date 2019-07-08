@@ -1,32 +1,44 @@
 <Vslider>:
+    rows: 1
     size_hint_x: None
-    width: 100
+    width: 80
+    widget_label: ''
+    widget_label_color: .75, .75, .75
+    widget_color: 1, 1, 1
     widget_value: 50
     canvas:
         Color:
-            rgba: 1, .5, 0, .5
+            rgba: self.widget_color + [.5]
         RoundedRectangle:
             pos: (self.x, self.y)
             size: (self.width, self.height * self.widget_value / 100)
         Color:
-            rgb: 1, .5, 0
+            rgb: self.widget_color
         RoundedRectangle:
             pos: (self.x, self.y + (self.height - 30) * self.widget_value / 100)
             size: (self.width, 30)
         Color:
-            rgba: 1, .5, 0, .6
+            rgba: self.widget_color + [.6]
         Line:
             width: 2
             rounded_rectangle: (self.x, self.y, self.width, self.height, 10, 10, 10, 10)
+    Label:
+        color: root.widget_label_color + [1]
+        text: root.widget_label
 
 <Table>:
     cols: 2
     padding: 20
     spacing: 20
     Vslider:
+        widget_value: 25
+        widget_color: 1, .5, 0
         widget_name: 'slider_1'
+        widget_label: 'freq'
     Vslider:
+        widget_color: 0, .5, 1
         widget_name: 'slider_2'
+        widget_label: 'vol'
     Vslider:
         widget_name: 'slider_3'
     Vslider:

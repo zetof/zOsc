@@ -9,7 +9,7 @@ class Table(GridLayout):
     widget_name = None
 
 
-class Vslider(Widget):
+class Vslider(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
 
