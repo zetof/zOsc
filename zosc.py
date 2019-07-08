@@ -1,12 +1,12 @@
 from kivy.app import App
-from kivy.uix.widget import Widget
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import NumericProperty
 from kivy.properties import StringProperty
-
+from client.osc import OscClient
 
 class Table(GridLayout):
     widget_name = None
+    osc = OscClient('127.0.0.1', 57120)
 
 
 class Vslider(GridLayout):
@@ -16,7 +16,9 @@ class Vslider(GridLayout):
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
             Table.widget_name = self.widget_name
-            self.widget_value = round(100 * (touch.y - self.y) / self.height)
+            value = round(100 * (touch.y - self.y) / self.height)
+            self.widget_value = value
+            Table.osc.send('foobar', self.widget_name, value)
 
     def on_touch_move(self, touch):
         if self.widget_name == Table.widget_name:
@@ -26,14 +28,16 @@ class Vslider(GridLayout):
             elif value > 100:
                 value = 100
             self.widget_value = value
-            print(self.widget_value)
+            Table.osc.send('foobar', self.widget_name, value)
 
     def on_touch_up(self, touch):
         Table.widget_name = None
 
+
 class ZoscApp(App):
     def build(self):
         return Table()
+
 
 if __name__ == '__main__':
     ZoscApp().run()
