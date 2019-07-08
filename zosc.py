@@ -7,7 +7,7 @@ Builder.load_file('components/vslider.kv')
 
 
 class Table(GridLayout):
-    widget_name = None
+    current_used_widget = None
     osc = OscClient('127.0.0.1', 57120)
 
 
