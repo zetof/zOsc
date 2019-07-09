@@ -6,4 +6,5 @@ class OscClient():
         self.client = udp_client.SimpleUDPClient(host, port)
 
     def send(self, url, widget_label, message):
-        self.client.send_message('/' + url, [widget_label, message])
+        if url != '':
+            self.client.send_message('/' + url, [widget_label, message])

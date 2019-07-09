@@ -1,0 +1,23 @@
+#:import Adsr components.adsr
+
+<Aslider@Vslider>:
+    size_hint_y: None
+    width: 50
+    height: 200
+    widget_color: 0, 1, 0
+    osc_group: 'adsr'
+
+<Adsr>:
+    cols: 4
+    Aslider:
+        widget_label: 'A'
+        widget_name: 'a_slider_default'
+    Aslider:
+        widget_label: 'D'
+        widget_name: 'd_slider_default'
+    Aslider:
+        widget_label: 'S'
+        widget_name: 's_slider_default'
+    Aslider:
+        widget_label: 'R'
+        widget_name: 'r_slider_default'

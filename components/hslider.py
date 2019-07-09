@@ -21,12 +21,13 @@ class Hslider(GridLayout):
         app = App.get_running_app()
         if self.widget_name == app.root.current_used_widget:
             value = round(100 * (touch.x - self.x) / self.width)
-            if value < 0:
+            if value < 0  and self.widget_value > 0:
                 value = 0
-            elif value > 100:
+            elif value > 100  and self.widget_value < 100:
                 value = 100
-            self.widget_value = value
-            app.root.osc.send(self.osc_group, self.widget_name, value)
+            if value >= 0 and value <= 100:
+                self.widget_value = value
+                app.root.osc.send(self.osc_group, self.widget_name, value)
 
     def on_touch_up(self, touch):
         app = App.get_running_app()
