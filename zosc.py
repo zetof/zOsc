@@ -4,6 +4,7 @@ from client.osc import OscClient
 from kivy.lang import Builder
 
 Builder.load_file('components/vslider.kv')
+Builder.load_file('components/hslider.kv')
 
 
 class Table(GridLayout):

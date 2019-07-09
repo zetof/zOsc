@@ -1,17 +1,29 @@
 <Table>:
-    cols: 2
-    padding: 20
-    spacing: 20
-    Vslider:
-        widget_value: 25
-        widget_color: 1, .5, 0
-        widget_name: 'slider_1'
-        widget_label: 'freq'
-    Vslider:
-        widget_color: 0, .5, 1
-        widget_name: 'slider_2'
-        widget_label: 'vol'
-    Vslider:
-        widget_name: 'slider_3'
-    Vslider:
-        widget_name: 'slider_4'
+    rows: 2
+    GridLayout:
+        cols: 4
+        padding: 20
+        spacing: 20
+        Vslider:
+            widget_value: 25
+            widget_color: 1, .5, 0
+            widget_name: 'slider_1'
+            widget_label: 'freq'
+            osc_group: 'foobar'
+        Vslider:
+            widget_color: 0, .5, 1
+            widget_name: 'slider_2'
+            widget_label: 'vol'
+            osc_group: 'foobar'
+        Vslider:
+            widget_name: 'slider_3'
+        Vslider:
+            widget_name: 'slider_4'
+    GridLayout:
+        rows:2
+        padding: 20
+        spacing: 20
+        Hslider:
+            height: 50
+            widget_name: 'slider_5'
+            widget_label: 'type'

@@ -1,9 +1,9 @@
-#:import Vslider components.vslider
+#:import Hslider components.hslider
 
-<Vslider>:
+<Hslider>:
     rows: 1
-    size_hint_x: None
-    width: 80
+    size_hint_y: None
+    height: 80
     widget_label: ''
     widget_label_color: .75, .75, .75
     widget_color: 1, 1, 1
@@ -14,12 +14,12 @@
             rgba: self.widget_color + [.5]
         RoundedRectangle:
             pos: (self.x, self.y)
-            size: (self.width, self.height * self.widget_value / 100)
+            size: (self.width * self.widget_value / 100, self.height)
         Color:
             rgb: self.widget_color
         RoundedRectangle:
-            pos: (self.x, self.y + (self.height - 30) * self.widget_value / 100)
-            size: (self.width, 30)
+            pos: (self.x + (self.width - 30) * self.widget_value / 100, self.y)
+            size: (30, self.height)
         Color:
             rgba: self.widget_color + [.6]
         Line:
