@@ -1,23 +1,33 @@
 #:import Adsr components.adsr
 
 <Aslider@Vslider>:
-    size_hint_y: None
-    width: 50
-    height: 200
-    widget_color: 0, 1, 0
-    osc_group: 'adsr'
+    width: 40
+    widget_color: 0, .7, 0
 
 <Adsr>:
     cols: 4
+    padding: 10
+    spacing: 10
+    osc_group: 'adsr'
+    canvas:
+        Color:
+            rgba: 1, 0, 0, .7
+        Line:
+            width: 2
+            points: (self.x + 15, self.y + 15, self.x + 55, self.y + self.height - 20, self.x + 105, self.y + self.height * .6, self.x + 155, self.y + self.height * .6, self.x + 190, self.y + 15)
     Aslider:
+        widget_name: root.osc_group + '_a_slider'
         widget_label: 'A'
-        widget_name: 'a_slider_default'
+        osc_group: root.osc_group
     Aslider:
+        widget_name: root.osc_group + '_d_slider'
         widget_label: 'D'
-        widget_name: 'd_slider_default'
+        osc_group: root.osc_group
     Aslider:
+        widget_name: root.osc_group + '_s_slider'
         widget_label: 'S'
-        widget_name: 's_slider_default'
+        osc_group: root.osc_group
     Aslider:
+        widget_name: root.osc_group + '_r_slider'
         widget_label: 'R'
-        widget_name: 'r_slider_default'
+        osc_group: root.osc_group

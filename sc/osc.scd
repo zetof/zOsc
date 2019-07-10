@@ -16,8 +16,19 @@ Synth(\simple_osc);
 
 OSCdef.new(\foobar, {
 	arg message, time, addr, port;
+	message.postln;
 	if(message[1] == 'slider_1', {~midinote = message[2].linlin(0, 100, 60, 84)});
 	if(message[1] == 'slider_2', {~vol = message[2].linlin(0, 100, 0.1, 0.3)});
 	Synth(\simple_osc, [\midinote, ~midinote, \vol, ~vol]);
 }, '/foobar');
+
+OSCdef.new(\adsr_1, {
+	arg message, time, addr, port;
+	message.postln;
+}, '/adsr_1');
+
+OSCdef.new(\adsr_2, {
+	arg message, time, addr, port;
+	message.postln;
+}, '/adsr_2');
 )
