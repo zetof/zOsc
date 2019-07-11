@@ -29,9 +29,9 @@ class Hslider(GridLayout):
             if value >= 0 and value <= 100:
                 self.widget_value = value
                 app.root.osc.send(self.osc_group, self.widget_name, value)
-        return super(Hslider, self).on_touch_down(touch)
+        return super(Hslider, self).on_touch_move(touch)
 
     def on_touch_up(self, touch):
         app = App.get_running_app()
         app.root.current_used_widget = None
-        return super(Hslider, self).on_touch_down(touch)
+        return super(Hslider, self).on_touch_up(touch)

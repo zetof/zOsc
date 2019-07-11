@@ -4,7 +4,7 @@ from kivy.properties import NumericProperty
 from kivy.properties import StringProperty
 
 
-class Vslider(GridLayout):
+class Rslider(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
     osc_group = StringProperty()
@@ -16,7 +16,7 @@ class Vslider(GridLayout):
             value = round(100 * (touch.y - self.y) / self.height)
             self.widget_value = value
             app.root.osc.send(self.osc_group, self.widget_name, value)
-        return super(Vslider, self).on_touch_down(touch)
+        return super(Rslider, self).on_touch_down(touch)
 
     def on_touch_move(self, touch):
         app = App.get_running_app()
@@ -29,9 +29,9 @@ class Vslider(GridLayout):
             if value >=0 and value <= 100:
                 self.widget_value = value
                 app.root.osc.send(self.osc_group, self.widget_name, value)
-        return super(Vslider, self).on_touch_move(touch)
+        return super(Rslider, self).on_touch_move(touch)
 
     def on_touch_up(self, touch):
         app = App.get_running_app()
         app.root.current_used_widget = None
-        return super(Vslider, self).on_touch_up(touch)
+        return super(Rslider, self).on_touch_up(touch)

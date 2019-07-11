@@ -1,0 +1,41 @@
+#:import Rslider components.rslider
+
+<Rslider>:
+    rows: 1
+    widget_width: 60
+    widget_start_angle: -160
+    widget_end_angle: 160
+    cursor_position: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100
+    cursor_start: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100 - 4
+    cursor_end: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100 + 4
+    widget_name: 'v_slider_default'
+    widget_label: ''
+    widget_label_color: .75, .75, .75
+    widget_color: 1, 1, 1
+    widget_value: 25
+    osc_group: ''
+    canvas:
+        Color:
+            rgba: self.widget_color + [.3]
+        Line:
+            width: self.widget_width / 2
+            cap: 'none'
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2 - self.widget_width / 2, self.widget_start_angle, self.cursor_position)
+        Color:
+            rgb: self.widget_color
+        Line:
+            width: self.widget_width / 2
+            cap: 'none'
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2 - self.widget_width / 2, self.cursor_start, self.cursor_end)
+        Color:
+            rgba: self.widget_color + [.6]
+        Line:
+            width: 2
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2, self.widget_start_angle, self.widget_end_angle)
+        Line:
+            width: self.widget_width / 2
+            cap: 'none'
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2 - self.widget_width / 2, self.widget_start_angle, self.widget_start_angle - 1)
+    Label:
+        color: root.widget_label_color + [1]
+        text: root.widget_label

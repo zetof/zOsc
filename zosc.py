@@ -6,6 +6,7 @@ from kivy.lang import Builder
 Builder.load_file('components/vslider.kv')
 Builder.load_file('components/hslider.kv')
 Builder.load_file('components/adsr.kv')
+Builder.load_file('components/rslider.kv')
 
 
 class Table(GridLayout):
