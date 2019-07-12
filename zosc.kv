@@ -22,12 +22,9 @@
         rows: 2
         padding: 5
         spacing: 5
-        Selector:
-            widget_name: 'shape'
-            widget_choices: 4
-            widget_labels: ('sin', 'saw', 'sqr', 'nse')
+        Oscillator:
             widget_width: 60
-            widget_color: .75, 0, .25
+
             osc_group: root.osc_group
         Adsr:
             osc_group: root.osc_group
@@ -38,55 +35,75 @@
         spacing: 5
         SubSynth:
             osc_group: root.osc_group
+            sub_nbr: '1'
         SubSynth:
             osc_group: root.osc_group
+            sub_nbr: '2'
         SubSynth:
             osc_group: root.osc_group
+            sub_nbr: '3'
         SubSynth:
             osc_group: root.osc_group
+            sub_nbr: '4'
 
 <SubSynth@GridLayout>:
     cols: 6
     padding: 15
     spacing: 15
     osc_group: ''
-    Toggle:
-        widget_name: 'on_1'
-        widget_label: 'on'
-        widget_color: .75, .65, 0
+    sub_nbr: ''
+    OnOff:
         osc_group: root.osc_group
-    Selector:
-        widget_name: 'shape_1'
-        widget_choices: 4
-        widget_width: 20
-        widget_labels: ('sin', 'saw', 'sqr', 'nse')
-        widget_color: .75, 0, .25
+        sub_nbr: root.sub_nbr
+    Oscillator:
         osc_group: root.osc_group
-    Rslider:
-        widget_width: 20
-        widget_name: 'detune_coarse_1'
-        widget_sensibility: 1
-        widget_label: 'dt crs'
-        widget_color: .2, .5, .75
+        sub_nbr: root.sub_nbr
+    Detune:
         osc_group: root.osc_group
-    Rslider:
-        widget_width: 20
-        widget_name: 'detune_fine_1'
-        widget_sensibility: 1
-        widget_label: 'dt fn'
-        widget_color: .2, .5, .75
+        sub_nbr: root.sub_nbr
+        slider_name: 'mul_coarse'
+        widget_label: 'x crse'
+    Detune:
         osc_group: root.osc_group
-    Rslider:
-        widget_width: 20
-        widget_name: 'offset_coarse_1'
-        widget_sensibility: 1
-        widget_label: 'off crs'
-        widget_color: .2, .5, .75
+        sub_nbr: root.sub_nbr
+        slider_name: 'mul_fine'
+        widget_label: 'x fine'
+    Detune:
         osc_group: root.osc_group
-    Rslider:
-        widget_width: 20
-        widget_name: 'offset_fine_1'
-        widget_sensibility: 1
-        widget_label: 'off fn'
-        widget_color: .2, .5, .75
+        sub_nbr: root.sub_nbr
+        slider_name: 'off_coarse'
+        widget_label: '+ crse'
+    Detune:
         osc_group: root.osc_group
+        sub_nbr: root.sub_nbr
+        slider_name: 'off_fine'
+        widget_label: '+ fine'
+
+<OnOff@Toggle>:
+    osc_group: ''
+    sub_nbr: ''
+    widget_name: 'on_' + root.sub_nbr
+    widget_label: 'on'
+    widget_color: .75, .65, 0
+    osc_group: root.osc_group
+
+<Oscillator@Selector>:
+    osc_group: ''
+    sub_nbr: ''
+    widget_name: 'oscillator_' + root.sub_nbr
+    widget_choices: 4
+    widget_width: 20
+    widget_labels: ('sin', 'saw', 'sqr', 'nse')
+    widget_color: .75, 0, .25
+    osc_group: root.osc_group
+
+<Detune@Rslider>:
+    osc_group: ''
+    sub_nbr: ''
+    slider_name: ''
+    widget_width: 20
+    widget_name: root.slider_name + '_' + root.sub_nbr
+    widget_sensibility: 1
+    widget_label: 'off fn'
+    widget_color: .2, .5, .75
+    osc_group: root.osc_group
