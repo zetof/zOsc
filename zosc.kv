@@ -1,148 +1,92 @@
 <Table>:
     rows: 1
+    Synth:
+        osc_group: 'synth_1'
+
+<Synth@GridLayout>:
+    cols: 3
+    padding: 10
+    spacing: 10
+    osc_group: ''
+    Vslider:
+        size_hint_x: .35
+        width: 50
+        widget_value: 25
+        widget_color: 1, .5, 0
+        widget_name: 'vol'
+        widget_label: 'vol'
+        osc_group: root.osc_group
+        widget_color: 0, .5, 1
     GridLayout:
-        cols: 3
-        padding: 10
-        spacing: 10
-        Vslider:
-            size_hint_x: .35
-            width: 50
-            widget_value: 25
-            widget_color: 1, .5, 0
-            widget_name: 'vol'
-            widget_label: 'vol'
-            osc_group: 'synth_1'
-            widget_color: 0, .5, 1
-        GridLayout:
-            size_hint_x: 1.5
-            rows: 2
-            padding: 5
-            spacing: 5
-            Selector:
-                widget_name: 'shape'
-                widget_choices: 4
-                widget_labels: ('sin', 'saw', 'sqr', 'nse')
-                widget_width: 60
-                widget_color: .75, 0, .25
-                osc_group: 'synth_1'
-            Adsr:
-                osc_group: 'adsr_1'
-        GridLayout:
-            size_hint_x: 3
-            rows: 4
-            padding: 5
-            spacing: 5
-            GridLayout:
-                cols: 6
-                padding: 15
-                spacing: 15
-                Toggle:
-                    widget_name: 'on_1'
-                    widget_label: 'on'
-                    widget_color: .75, .65, 0
-                    osc_group: 'synth_1'
-                Selector:
-                    widget_name: 'shape_1'
-                    widget_choices: 4
-                    widget_width: 20
-                    widget_labels: ('sin', 'saw', 'sqr', 'nse')
-                    widget_color: .75, 0, .25
-                    osc_group: 'synth_1'
-                Rslider:
-                    widget_width: 20
-                    widget_name: 'detune_coarse_1'
-                    widget_sensibility: 1
-                    widget_label: 'dt crs'
-                    widget_color: .2, .5, .75
-                    osc_group: 'synth_1'
-                Rslider:
-                    widget_width: 20
-                    widget_name: 'detune_fine_1'
-                    widget_sensibility: 1
-                    widget_label: 'dt fn'
-                    widget_color: .2, .5, .75
-                    osc_group: 'synth_1'
-                Rslider:
-                    widget_width: 20
-                    widget_name: 'offset_coarse_1'
-                    widget_sensibility: 1
-                    widget_label: 'off crs'
-                    widget_color: .2, .5, .75
-                    osc_group: 'synth_1'
-                Rslider:
-                    widget_width: 20
-                    widget_name: 'offset_fine_1'
-                    widget_sensibility: 1
-                    widget_label: 'off fn'
-                    widget_color: .2, .5, .75
-                    osc_group: 'synth_1'
-            GridLayout:
-                cols: 6
-                Toggle:
-                    widget_name: 'on_1'
-                    widget_label: 'on'
-                    widget_color: .75, .65, 0
-                    osc_group: 'synth_1'
-                Selector:
-                    widget_name: 'shape'
-                    widget_choices: 4
-                    widget_width: 10
-                    widget_labels: ('sin', 'saw', 'sqr', 'nse')
-                    widget_color: .75, 0, .25
-                    osc_group: 'synth_1'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-            GridLayout:
-                cols: 6
-                Toggle:
-                    padding: 20
-                    spacing: 20
-                    widget_name: 'on_1'
-                    widget_label: 'on'
-                    widget_color: .75, .65, 0
-                    osc_group: 'synth_1'
-                Selector:
-                    widget_name: 'shape'
-                    widget_choices: 4
-                    widget_width: 10
-                    widget_labels: ('sin', 'saw', 'sqr', 'nse')
-                    widget_color: .75, 0, .25
-                    osc_group: 'synth_1'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-            GridLayout:
-                cols: 6
-                Toggle:
-                    padding: 20
-                    spacing: 20
-                    widget_name: 'on_1'
-                    widget_label: 'on'
-                    widget_color: .75, .65, 0
-                    osc_group: 'synth_1'
-                Selector:
-                    widget_name: 'shape'
-                    widget_choices: 4
-                    widget_width: 10
-                    widget_labels: ('sin', 'saw', 'sqr', 'nse')
-                    widget_color: .75, 0, .25
-                    osc_group: 'synth_1'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
-                Label:
-                    text: 'c'
+        size_hint_x: 1.5
+        rows: 2
+        padding: 5
+        spacing: 5
+        Selector:
+            widget_name: 'shape'
+            widget_choices: 4
+            widget_labels: ('sin', 'saw', 'sqr', 'nse')
+            widget_width: 60
+            widget_color: .75, 0, .25
+            osc_group: root.osc_group
+        Adsr:
+            osc_group: root.osc_group
+    GridLayout:
+        size_hint_x: 3
+        rows: 4
+        padding: 5
+        spacing: 5
+        SubSynth:
+            osc_group: root.osc_group
+        SubSynth:
+            osc_group: root.osc_group
+        SubSynth:
+            osc_group: root.osc_group
+        SubSynth:
+            osc_group: root.osc_group
+
+<SubSynth@GridLayout>:
+    cols: 6
+    padding: 15
+    spacing: 15
+    osc_group: ''
+    Toggle:
+        widget_name: 'on_1'
+        widget_label: 'on'
+        widget_color: .75, .65, 0
+        osc_group: root.osc_group
+    Selector:
+        widget_name: 'shape_1'
+        widget_choices: 4
+        widget_width: 20
+        widget_labels: ('sin', 'saw', 'sqr', 'nse')
+        widget_color: .75, 0, .25
+        osc_group: root.osc_group
+    Rslider:
+        widget_width: 20
+        widget_name: 'detune_coarse_1'
+        widget_sensibility: 1
+        widget_label: 'dt crs'
+        widget_color: .2, .5, .75
+        osc_group: root.osc_group
+    Rslider:
+        widget_width: 20
+        widget_name: 'detune_fine_1'
+        widget_sensibility: 1
+        widget_label: 'dt fn'
+        widget_color: .2, .5, .75
+        osc_group: root.osc_group
+    Rslider:
+        widget_width: 20
+        widget_name: 'offset_coarse_1'
+        widget_sensibility: 1
+        widget_label: 'off crs'
+        widget_color: .2, .5, .75
+        osc_group: root.osc_group
+    Rslider:
+        widget_width: 20
+        widget_name: 'offset_fine_1'
+        widget_sensibility: 1
+        widget_label: 'off fn'
+        widget_color: .2, .5, .75
+        osc_group: root.osc_group
