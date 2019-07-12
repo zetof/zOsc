@@ -7,21 +7,23 @@ from kivy.properties import StringProperty
 class Rslider(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
+    widget_sensibility = NumericProperty()
     osc_group = StringProperty()
+    last_y_cursor_value = 0
 
     def on_touch_down(self, touch):
         app = App.get_running_app()
         if self.collide_point(*touch.pos):
             app.root.current_used_widget = self.widget_name
-            value = round(100 * (touch.y - self.y) / self.height)
-            self.widget_value = value
-            app.root.osc.send(self.osc_group, self.widget_name, value)
+            self.last_y_cursor_value = touch.y
         return super(Rslider, self).on_touch_down(touch)
 
     def on_touch_move(self, touch):
         app = App.get_running_app()
         if self.widget_name == app.root.current_used_widget:
-            value = round(100 * (touch.y - self.y) / self.height)
+            value = round(self.widget_value + (touch.y - self.last_y_cursor_value) / self.widget_sensibility)
+            if value != self.widget_value:
+                self.last_y_cursor_value = touch.y
             if value < 0  and self.widget_value > 0:
                 value = 0
             elif value > 100 and self.widget_value < 100:

@@ -27,8 +27,8 @@ OSCdef.new(\adsr_1, {
 	message.postln;
 }, '/adsr_1');
 
-OSCdef.new(\adsr_2, {
+OSCdef.new(\r_slider, {
 	arg message, time, addr, port;
 	message.postln;
-}, '/adsr_2');
+}, '/r_slider');
 )
