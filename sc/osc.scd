@@ -31,4 +31,13 @@ OSCdef.new(\r_slider, {
 	arg message, time, addr, port;
 	message.postln;
 }, '/r_slider');
+
+OSCdef.new(\buttons, {
+	arg message, time, addr, port;
+	message.postln;
+}, '/buttons');
+OSCdef.new(\pads, {
+	arg message, time, addr, port;
+	message.postln;
+}, '/pads');
 )

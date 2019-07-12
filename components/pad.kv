@@ -1,0 +1,29 @@
+#:import Pad components.pad
+
+<Pad>:
+    rows: 1
+    widget_name: 'button_default'
+    widget_label: ''
+    widget_label_color: .75, .75, .75
+    widget_color: 1, 1, 1
+    widget_value: 0
+    osc_group: ''
+    canvas:
+        Color:
+            rgba: self.widget_color + [.3]
+        RoundedRectangle:
+            pos: (self.x, self.y)
+            size: (self.width, self.height)
+        Color:
+            rgba: self.widget_color + [self.widget_value]
+        RoundedRectangle:
+            pos: (self.x + 5, self.y + 5)
+            size: (self.width - 10, self.height - 10)
+        Color:
+            rgba: self.widget_color + [.6]
+        Line:
+            width: 2
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 10, 10, 10, 10)
+    Label:
+        color: root.widget_label_color + [1]
+        text: root.widget_label

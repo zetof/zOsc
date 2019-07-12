@@ -32,18 +32,54 @@
             osc_group: 'adsr_1'
         GridLayout:
             cols: 2
+            padding: 20
+            spacing: 20
             Rslider:
+                widget_width: 30
                 widget_name: 'slider_6'
                 widget_sensibility: 1
+                widget_label: 'feed'
+                widget_color: .2, .5, .75
                 osc_group: 'r_slider'
             Rslider:
                 widget_name: 'slider_7'
                 widget_sensibility: 10
                 osc_group: 'r_slider'
-            Rslider:
-                widget_name: 'slider_8'
-                widget_sensibility: 20
-                osc_group: 'r_slider'
-            Rslider:
-                widget_name: 'slider_9'
-                osc_group: 'r_slider'
+            GridLayout:
+                cols: 2
+                padding: 20
+                spacing: 20
+                Toggle:
+                    widget_name: 'button_1'
+                    widget_label: 'mute'
+                    widget_color: .75, .65, 0
+                    osc_group: 'buttons'
+                Toggle:
+                    widget_name: 'button_2'
+                    osc_group: 'buttons'
+                Toggle:
+                    widget_name: 'button_3'
+                    osc_group: 'buttons'
+                Toggle:
+                    widget_name: 'button_4'
+                    osc_group: 'buttons'
+            GridLayout:
+                cols: 2
+                padding: 20
+                spacing: 20
+                Pad:
+                    widget_name: 'pad_1'
+                    widget_label: 'bass'
+                    widget_color: .65, .85, 0
+                    osc_group: 'pads'
+                Pad:
+                    widget_name: 'pad_2'
+                    widget_label: 'high'
+                    osc_group: 'pads'
+                Pad:
+                    widget_name: 'pad_3'
+                    widget_label: 'hi-hat'
+                    osc_group: 'pads'
+                Pad:
+                    widget_name: 'pad_4'
+                    osc_group: 'pads'

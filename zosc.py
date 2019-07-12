@@ -7,6 +7,8 @@ Builder.load_file('components/vslider.kv')
 Builder.load_file('components/hslider.kv')
 Builder.load_file('components/adsr.kv')
 Builder.load_file('components/rslider.kv')
+Builder.load_file('components/toggle.kv')
+Builder.load_file('components/pad.kv')
 
 
 class Table(GridLayout):
