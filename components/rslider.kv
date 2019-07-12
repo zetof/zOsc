@@ -5,9 +5,6 @@
     widget_width: 60
     widget_start_angle: -160
     widget_end_angle: 160
-    cursor_position: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100
-    cursor_start: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100 - 4
-    cursor_end: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100 + 4
     widget_name: 'r_slider_default'
     widget_label: ''
     widget_label_color: .75, .75, .75
@@ -15,6 +12,9 @@
     widget_value: 50
     widget_sensibility: 5
     osc_group: ''
+    cursor_position: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100
+    cursor_start: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100 - 4
+    cursor_end: self.widget_start_angle + (self.widget_end_angle - self.widget_start_angle) * self.widget_value / 100 + 4
     canvas:
         Color:
             rgba: self.widget_color + [.3]

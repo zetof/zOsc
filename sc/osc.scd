@@ -36,8 +36,14 @@ OSCdef.new(\buttons, {
 	arg message, time, addr, port;
 	message.postln;
 }, '/buttons');
+
 OSCdef.new(\pads, {
 	arg message, time, addr, port;
 	message.postln;
 }, '/pads');
+
+OSCdef.new(\selector, {
+	arg message, time, addr, port;
+	message.postln;
+}, '/selector');
 )

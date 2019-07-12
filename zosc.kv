@@ -41,10 +41,12 @@
                 widget_label: 'feed'
                 widget_color: .2, .5, .75
                 osc_group: 'r_slider'
-            Rslider:
-                widget_name: 'slider_7'
-                widget_sensibility: 10
-                osc_group: 'r_slider'
+            Selector:
+                widget_name: 'selector_1'
+                widget_choices: 4
+                widget_labels: ('sin', 'saw', 'sqr', 'noise')
+                widget_color: .75, 0, .25
+                osc_group: 'selector'
             GridLayout:
                 cols: 2
                 padding: 20

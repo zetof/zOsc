@@ -1,0 +1,35 @@
+#:import Selector components.selector
+
+<Selector>:
+    rows: 1
+    widget_width: 30
+    widget_name: 'r_selector_default'
+    widget_labels: ('sin', 'saw', 'sqr', 'nse')
+    widget_label: self.widget_labels[1]
+    widget_label_color: .75, .75, .75
+    widget_color: 1, 1, 1
+    widget_choices: 4
+    widget_value: 0
+    widget_labels: ('val_1', 'val_2', 'val_3', 'val_4')
+    widget_label: self.widget_labels[self.widget_value]
+    osc_group: ''
+    cursor_start: 360 / self.widget_choices * self.widget_value
+    cursor_end: 360 / self.widget_choices * (self.widget_value + 1)
+    canvas:
+        Color:
+            rgb: self.widget_color
+        Line:
+            width: self.widget_width / 2
+            cap: 'none'
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2 - self.widget_width / 2, self.cursor_start, self.cursor_end)
+        Color:
+            rgba: self.widget_color + [.6]
+        Line:
+            width: 2
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2)
+        Line:
+            width: 2
+            circle: (self.x + self.width / 2, self.y + self.height / 2, min(self.width, self.height) / 2 - self.widget_width)
+    Label:
+        color: root.widget_label_color + [1]
+        text: root.widget_label
