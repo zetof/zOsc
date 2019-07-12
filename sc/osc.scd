@@ -21,29 +21,4 @@ OSCdef.new(\synth_1, {
 	if(message[1] == 'slider_2', {~vol = message[2].linlin(0, 100, 0.1, 0.3)});
 	Synth(\simple_osc, [\midinote, ~midinote, \vol, ~vol]);
 }, '/synth_1');
-
-OSCdef.new(\adsr_1, {
-	arg message, time, addr, port;
-	message.postln;
-}, '/adsr_1');
-
-OSCdef.new(\r_slider, {
-	arg message, time, addr, port;
-	message.postln;
-}, '/r_slider');
-
-OSCdef.new(\buttons, {
-	arg message, time, addr, port;
-	message.postln;
-}, '/buttons');
-
-OSCdef.new(\pads, {
-	arg message, time, addr, port;
-	message.postln;
-}, '/pads');
-
-OSCdef.new(\selector, {
-	arg message, time, addr, port;
-	message.postln;
-}, '/selector');
 )

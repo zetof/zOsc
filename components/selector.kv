@@ -13,8 +13,8 @@
     widget_labels: ('val_1', 'val_2', 'val_3', 'val_4')
     widget_label: self.widget_labels[self.widget_value]
     osc_group: ''
-    cursor_start: 360 / self.widget_choices * self.widget_value
-    cursor_end: 360 / self.widget_choices * (self.widget_value + 1)
+    cursor_start: 360 / self.widget_choices * self.widget_value - 180 / self.widget_choices
+    cursor_end: 360 / self.widget_choices * (self.widget_value + 1) - 180 / self.widget_choices
     canvas:
         Color:
             rgb: self.widget_color
