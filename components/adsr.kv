@@ -9,6 +9,10 @@
     padding: (10, 0)
     spacing: (10, 0)
     osc_group: 'adsr'
+    a_value: 50
+    d_value: 50
+    s_value: 50
+    r_value: 50
     canvas:
         Color:
             rgba: 1, 0, 0, .7
@@ -18,16 +22,20 @@
     Aslider:
         widget_name: root.osc_group + '_a_slider'
         widget_label: 'A'
+        widget_value: root.a_value
         osc_group: root.osc_group
     Aslider:
         widget_name: root.osc_group + '_d_slider'
         widget_label: 'D'
+        widget_value: root.d_value
         osc_group: root.osc_group
     Aslider:
         widget_name: root.osc_group + '_s_slider'
         widget_label: 'S'
+        widget_value: root.s_value
         osc_group: root.osc_group
     Aslider:
         widget_name: root.osc_group + '_r_slider'
         widget_label: 'R'
+        widget_value: root.r_value
         osc_group: root.osc_group

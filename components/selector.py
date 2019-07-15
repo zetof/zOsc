@@ -19,7 +19,7 @@ class Selector(GridLayout):
                 self.widget_value = 0
             else:
                 self.widget_value = value
-            app.root.osc.send(self.osc_group, self.widget_name, self.widget_value)
+            app.root.osc.send(self.osc_group, self.widget_name,  self.widget_value)
         return super(Selector, self).on_touch_down(touch)
 
     def on_touch_up(self, touch):

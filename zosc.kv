@@ -8,15 +8,10 @@
     padding: 10
     spacing: 10
     osc_group: ''
-    Vslider:
+    Volume:
         size_hint_x: .35
-        width: 50
-        widget_value: 25
-        widget_color: 1, .5, 0
         widget_name: 'vol'
-        widget_label: 'vol'
         osc_group: root.osc_group
-        widget_color: 0, .5, 1
     GridLayout:
         size_hint_x: 1.5
         rows: 2
@@ -24,9 +19,13 @@
         spacing: 5
         Oscillator:
             widget_width: 60
-
+            widget_name: 'main_type'
             osc_group: root.osc_group
         Adsr:
+            a_value: 1
+            d_value: 60
+            s_value: 80
+            r_value: 50
             osc_group: root.osc_group
     GridLayout:
         size_hint_x: 3
@@ -47,12 +46,15 @@
             sub_nbr: '4'
 
 <SubSynth@GridLayout>:
-    cols: 6
+    cols: 7
     padding: 15
     spacing: 15
     osc_group: ''
     sub_nbr: ''
     OnOff:
+        osc_group: root.osc_group
+        sub_nbr: root.sub_nbr
+    Volume:
         osc_group: root.osc_group
         sub_nbr: root.sub_nbr
     Oscillator:
@@ -86,6 +88,15 @@
     widget_label: 'on'
     widget_color: .75, .65, 0
     osc_group: root.osc_group
+
+<Volume@Vslider>:
+    osc_group: ''
+    sub_nbr: ''
+    widget_value: 25
+    widget_color: 1, .5, 0
+    widget_name: 'vol_' + root.sub_nbr
+    widget_label: 'vol'
+    widget_color: 0, .5, 1
 
 <Oscillator@Selector>:
     osc_group: ''
