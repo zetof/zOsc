@@ -10,6 +10,7 @@ Builder.load_file('components/rslider.kv')
 Builder.load_file('components/selector.kv')
 Builder.load_file('components/toggle.kv')
 Builder.load_file('components/pad.kv')
+Builder.load_file('components/group.kv')
 
 
 class Table(GridLayout):

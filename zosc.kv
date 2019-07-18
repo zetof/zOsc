@@ -30,56 +30,61 @@
     GridLayout:
         size_hint_x: 3
         rows: 4
-        padding: 5
-        spacing: 5
+        padding: 25
+        spacing: 25
         SubSynth:
+            widget_label: 'OSC 1'
             osc_group: root.osc_group
             sub_nbr: '1'
         SubSynth:
+            widget_label: 'OSC 2'
             osc_group: root.osc_group
             sub_nbr: '2'
         SubSynth:
+            widget_label: 'OSC 3'
             osc_group: root.osc_group
             sub_nbr: '3'
         SubSynth:
+            widget_label: 'OSC 4'
             osc_group: root.osc_group
             sub_nbr: '4'
 
-<SubSynth@GridLayout>:
-    cols: 7
-    padding: 15
-    spacing: 15
+<SubSynth@Group>:
     osc_group: ''
     sub_nbr: ''
-    OnOff:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-    Volume:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-    Oscillator:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-    Detune:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-        slider_name: 'mul_coarse'
-        widget_label: 'x crse'
-    Detune:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-        slider_name: 'mul_fine'
-        widget_label: 'x fine'
-    Detune:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-        slider_name: 'off_coarse'
-        widget_label: '+ crse'
-    Detune:
-        osc_group: root.osc_group
-        sub_nbr: root.sub_nbr
-        slider_name: 'off_fine'
-        widget_label: '+ fine'
+    GridLayout:
+        cols: 7
+        padding: 10
+        spacing: 10
+        OnOff:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        Volume:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        Oscillator:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'mul_coarse'
+            widget_label: 'x crse'
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'mul_fine'
+            widget_label: 'x fine'
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'off_coarse'
+            widget_label: '+ crse'
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'off_fine'
+            widget_label: '+ fine'
 
 <OnOff@Toggle>:
     osc_group: ''
