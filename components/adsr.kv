@@ -2,13 +2,14 @@
 
 <Aslider@Vslider>:
     width: 40
-    widget_color: 0, .7, 0
 
 <Adsr>:
     cols: 4
     padding: (10, 0)
     spacing: (10, 0)
-    osc_group: 'adsr'
+    osc_group: ''
+    widget_name: 'adsr_default'
+    widget_color: 1, 1, 1
     a_value: 50
     d_value: 50
     s_value: 50
@@ -20,22 +21,26 @@
             width: 2
             points: (self.x + 15, self.y + 5, self.x + self.width / 4, self.y + self.height - 10, self.x + self.width / 2, self.y + self.height * .6, self.x + self.width * 3 / 4, self.y + self.height * .6, self.x + self.width - 15, self.y + 5)
     Aslider:
-        widget_name: root.osc_group + '_a_slider'
+        widget_name: root.widget_name + '_a'
+        widget_color: root.widget_color
         widget_label: 'A'
         widget_value: root.a_value
         osc_group: root.osc_group
     Aslider:
-        widget_name: root.osc_group + '_d_slider'
+        widget_name: root.widget_name + '_d'
+        widget_color: root.widget_color
         widget_label: 'D'
         widget_value: root.d_value
         osc_group: root.osc_group
     Aslider:
-        widget_name: root.osc_group + '_s_slider'
+        widget_name: root.widget_name + '_s'
+        widget_color: root.widget_color
         widget_label: 'S'
         widget_value: root.s_value
         osc_group: root.osc_group
     Aslider:
-        widget_name: root.osc_group + '_r_slider'
+        widget_name: root.widget_name + '_r'
+        widget_color: root.widget_color
         widget_label: 'R'
         widget_value: root.r_value
         osc_group: root.osc_group

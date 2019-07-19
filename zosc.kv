@@ -1,119 +1,122 @@
-<Table>:
+<Synth>:
     rows: 1
-    Synth:
+    FmSynth:
         osc_group: 'synth_1'
 
-<Synth@GridLayout>:
-    cols: 3
-    padding: 10
-    spacing: 10
+<FmSynth@GridLayout>:
+    cols: 2
+    padding: 20
+    spacing: 20
     osc_group: ''
-    Volume:
-        size_hint_x: .35
-        widget_name: 'vol'
-        osc_group: root.osc_group
-    GridLayout:
-        size_hint_x: 1.5
-        rows: 2
-        padding: 5
-        spacing: 5
-        Oscillator:
-            widget_width: 60
-            widget_name: 'main_type'
-            osc_group: root.osc_group
-        Adsr:
-            a_value: 1
-            d_value: 60
-            s_value: 80
-            r_value: 50
-            osc_group: root.osc_group
-    GridLayout:
-        size_hint_x: 3
-        rows: 4
-        padding: 25
-        spacing: 25
-        SubSynth:
-            widget_label: 'OSC 1'
-            osc_group: root.osc_group
-            sub_nbr: '1'
-        SubSynth:
-            widget_label: 'OSC 2'
-            osc_group: root.osc_group
-            sub_nbr: '2'
-        SubSynth:
-            widget_label: 'OSC 3'
-            osc_group: root.osc_group
-            sub_nbr: '3'
-        SubSynth:
-            widget_label: 'OSC 4'
-            osc_group: root.osc_group
-            sub_nbr: '4'
-
-<SubSynth@Group>:
-    osc_group: ''
-    sub_nbr: ''
-    GridLayout:
-        cols: 7
-        padding: 10
-        spacing: 10
-        OnOff:
-            osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
+    BoxLayout:
+        size_hint_x: .1
+        padding: 5, 10
+        spacing: 5, 10
         Volume:
             osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
-        Oscillator:
+    GridLayout:
+        size_hint_x: .9
+        rows: 2
+        padding: 10
+        spacing: 10
+        Operator:
+            widget_label: 'MODULATOR'
+            slider_type: 'feed'
             osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
-        Detune:
+            sub_nbr: '1'
+        Operator:
+            widget_label: 'CARRIER'
+            slider_type: 'mod'
             osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
-            slider_name: 'mul_coarse'
-            widget_label: 'x crse'
-        Detune:
-            osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
-            slider_name: 'mul_fine'
-            widget_label: 'x fine'
-        Detune:
-            osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
-            slider_name: 'off_coarse'
-            widget_label: '+ crse'
-        Detune:
-            osc_group: root.osc_group
-            sub_nbr: root.sub_nbr
-            slider_name: 'off_fine'
-            widget_label: '+ fine'
+            sub_nbr: '2'
 
-<OnOff@Toggle>:
+<Operator@Group>:
+    init_values: 1, 20, 80, 40, 10, 50, 50, 50, 0
+    slider_type: ''
     osc_group: ''
     sub_nbr: ''
-    widget_name: 'on_' + root.sub_nbr
-    widget_label: 'on'
-    widget_color: .75, .65, 0
-    osc_group: root.osc_group
+    widget_color: .68, .71, .75
+    GridLayout:
+        cols: 3
+        padding: 10
+        spacing: 10
+        Envelope:
+            init_values: root.init_values[:4]
+            size_hint_x: .5
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        GridLayout:
+            size_hint_x: .4
+            rows: 2
+            cols: 2
+            padding: 10
+            spacing: 10
+            RatioOffset:
+                osc_group: root.osc_group
+                sub_nbr: root.sub_nbr
+                slider_name: 'ratio_coarse'
+                widget_value: root.init_values[4]
+                widget_label: 'RAT'
+                widget_color: .95, .69, .25
+            RatioOffset:
+                osc_group: root.osc_group
+                sub_nbr: root.sub_nbr
+                slider_name: 'ratio_fine'
+                widget_value: root.init_values[5]
+                widget_label: 'rat'
+                widget_color: .95, .69, .25
+            RatioOffset:
+                osc_group: root.osc_group
+                sub_nbr: root.sub_nbr
+                slider_name: 'offset_coarse'
+                widget_value: root.init_values[6]
+                widget_label: 'OFF'
+                widget_color: .98, .84, .63
+            RatioOffset:
+                osc_group: root.osc_group
+                sub_nbr: root.sub_nbr
+                widget_value: root.init_values[7]
+                slider_name: 'offset_fine'
+                widget_label: 'off'
+                widget_color: .98, .84, .63
+        ModFeedback:
+            slider_name: root.slider_type
+            widget_label: root.slider_type
+            widget_value: root.init_values[8]
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            size_hint_x: .1
 
 <Volume@Vslider>:
     osc_group: ''
     sub_nbr: ''
     widget_value: 25
-    widget_color: 1, .5, 0
-    widget_name: 'vol_' + root.sub_nbr
+    widget_color: .18, .52, .75
+    widget_name: 'vol'
     widget_label: 'vol'
-    widget_color: 0, .5, 1
 
-<Oscillator@Selector>:
+<Envelope@Adsr>:
+    init_values : 100, 100, 100, 100
     osc_group: ''
     sub_nbr: ''
-    widget_name: 'oscillator_' + root.sub_nbr
-    widget_choices: 4
-    widget_width: 20
-    widget_labels: ('sine', 'saw', 'square', 'noise')
-    widget_color: .75, 0, .25
-    osc_group: root.osc_group
+    a_value: root.init_values[0]
+    d_value: root.init_values[1]
+    s_value: root.init_values[2]
+    r_value: root.init_values[3]
+    widget_color: .05, .38, .32
+    widget_name: 'adsr_' + root.sub_nbr
 
-<Detune@Rslider>:
+<ModFeedback@Vslider>:
+    osc_group: ''
+    sub_nbr: ''
+    slider_name: ''
+    widget_value: 25
+    widget_color: 1, .5, 0
+    widget_name: root.slider_name + '_' + root.sub_nbr
+    widget_label: 'vol'
+    widget_color: 0.9, .3, .23
+
+<RatioOffset@Rslider>:
     osc_group: ''
     sub_nbr: ''
     slider_name: ''
@@ -121,5 +124,4 @@
     widget_name: root.slider_name + '_' + root.sub_nbr
     widget_sensibility: 1
     widget_label: 'off fn'
-    widget_color: .2, .5, .75
     osc_group: root.osc_group

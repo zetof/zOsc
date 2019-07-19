@@ -1,0 +1,125 @@
+<Table>:
+    rows: 1
+    Synth:
+        osc_group: 'synth_1'
+
+<Synth@GridLayout>:
+    cols: 3
+    padding: 10
+    spacing: 10
+    osc_group: ''
+    Volume:
+        size_hint_x: .35
+        widget_name: 'vol'
+        osc_group: root.osc_group
+    GridLayout:
+        size_hint_x: 1.5
+        rows: 2
+        padding: 5
+        spacing: 5
+        Oscillator:
+            widget_width: 60
+            widget_name: 'main_type'
+            osc_group: root.osc_group
+        Adsr:
+            a_value: 1
+            d_value: 60
+            s_value: 80
+            r_value: 50
+            osc_group: root.osc_group
+    GridLayout:
+        size_hint_x: 3
+        rows: 4
+        padding: 25
+        spacing: 25
+        SubSynth:
+            widget_label: 'OSC 1'
+            osc_group: root.osc_group
+            sub_nbr: '1'
+        SubSynth:
+            widget_label: 'OSC 2'
+            osc_group: root.osc_group
+            sub_nbr: '2'
+        SubSynth:
+            widget_label: 'OSC 3'
+            osc_group: root.osc_group
+            sub_nbr: '3'
+        SubSynth:
+            widget_label: 'OSC 4'
+            osc_group: root.osc_group
+            sub_nbr: '4'
+
+<SubSynth@Group>:
+    osc_group: ''
+    sub_nbr: ''
+    GridLayout:
+        cols: 7
+        padding: 10
+        spacing: 10
+        OnOff:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        Volume:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        Oscillator:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'mul_coarse'
+            widget_label: 'x crse'
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'mul_fine'
+            widget_label: 'x fine'
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'off_coarse'
+            widget_label: '+ crse'
+        Detune:
+            osc_group: root.osc_group
+            sub_nbr: root.sub_nbr
+            slider_name: 'off_fine'
+            widget_label: '+ fine'
+
+<OnOff@Toggle>:
+    osc_group: ''
+    sub_nbr: ''
+    widget_name: 'on_' + root.sub_nbr
+    widget_label: 'on'
+    widget_color: .75, .65, 0
+    osc_group: root.osc_group
+
+<Volume@Vslider>:
+    osc_group: ''
+    sub_nbr: ''
+    widget_value: 25
+    widget_color: 1, .5, 0
+    widget_name: 'vol_' + root.sub_nbr
+    widget_label: 'vol'
+    widget_color: 0, .5, 1
+
+<Oscillator@Selector>:
+    osc_group: ''
+    sub_nbr: ''
+    widget_name: 'oscillator_' + root.sub_nbr
+    widget_choices: 4
+    widget_width: 20
+    widget_labels: ('sine', 'saw', 'square', 'noise')
+    widget_color: .75, 0, .25
+    osc_group: root.osc_group
+
+<Detune@Rslider>:
+    osc_group: ''
+    sub_nbr: ''
+    slider_name: ''
+    widget_width: 20
+    widget_name: root.slider_name + '_' + root.sub_nbr
+    widget_sensibility: 1
+    widget_label: 'off fn'
+    widget_color: .2, .5, .75
+    osc_group: root.osc_group

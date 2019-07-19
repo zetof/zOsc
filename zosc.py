@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from client.osc import OscClient
 from kivy.lang import Builder
+from kivy.core.window import Window
 
 Builder.load_file('components/vslider.kv')
 Builder.load_file('components/hslider.kv')
@@ -13,7 +14,7 @@ Builder.load_file('components/pad.kv')
 Builder.load_file('components/group.kv')
 
 
-class Table(GridLayout):
+class Synth(GridLayout):
 
     current_used_widget = None
     osc = OscClient('127.0.0.1', 57120)
@@ -22,7 +23,7 @@ class Table(GridLayout):
 class ZoscApp(App):
 
     def build(self):
-        return Table()
+        return Synth()
 
     def on_start(self):
 
@@ -34,6 +35,8 @@ class ZoscApp(App):
 
         for child in self.root.children:
             send_init_value(child)
+
+        Window.size = (600, 480)
 
 if __name__ == '__main__':
     ZoscApp().run()
