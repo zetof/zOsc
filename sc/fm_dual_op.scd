@@ -114,7 +114,7 @@ OSCdef.new(\synth_1, {
 	if(msg[1] == 'adsr_2_r', {~adsr_2_r = msg[2].linlin(0, 100, 0, 5)});
 	if(msg[1] == 'ratio_coarse_2', {~ratio_coarse_2 = msg[2].linlin(0, 100, 1, 10)});
 	if(msg[1] == 'ratio_fine_2', {~ratio_fine_2 = msg[2].linlin(0, 100, -1, 1)});
-	if(msg[1] == 'offset_coarse_2', {~offset_coarse_2 = msg[2].linlin(0, -1000, 1, 1000)});
+	if(msg[1] == 'offset_coarse_2', {~offset_coarse_2 = msg[2].linlin(0, 100, -1000, 1000)});
 	if(msg[1] == 'offset_fine_2', {~offset_fine_2 = msg[2].linlin(0, 100, -100, 100)});
 	if(msg[1] == 'mod_2', {~mod_2 = msg[2]});
 
