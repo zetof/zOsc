@@ -10,6 +10,7 @@
     osc_group: ''
     widget_name: 'adsr_default'
     widget_color: 1, 1, 1
+    widget_group: '0'
     a_value: 50
     d_value: 50
     s_value: 50
@@ -25,22 +26,26 @@
         widget_color: root.widget_color
         widget_label: 'A'
         widget_value: root.a_value
+        widget_group: root.widget_group
         osc_group: root.osc_group
     Aslider:
         widget_name: root.widget_name + '_d'
         widget_color: root.widget_color
         widget_label: 'D'
         widget_value: root.d_value
+        widget_group: root.widget_group
         osc_group: root.osc_group
     Aslider:
         widget_name: root.widget_name + '_s'
         widget_color: root.widget_color
         widget_label: 'S'
         widget_value: root.s_value
+        widget_group: root.widget_group
         osc_group: root.osc_group
     Aslider:
         widget_name: root.widget_name + '_r'
         widget_color: root.widget_color
         widget_label: 'R'
         widget_value: root.r_value
+        widget_group: root.widget_group
         osc_group: root.osc_group

@@ -1,31 +1,43 @@
 <Synth>:
-    rows: 1
+    osc_group: 'fm_synth'
+    rows: 3
     FmSynth:
-        osc_group: 'synth_1'
+        synth_nbr: '1'
+        osc_group: root.osc_group
+    FmSynth:
+        synth_nbr: '2'
+        osc_group: root.osc_group
+    FmSynth:
+        synth_nbr: '3'
+        osc_group: root.osc_group
 
 <FmSynth@GridLayout>:
     cols: 2
-    padding: 20
-    spacing: 20
+    padding: 0
+    spacing: 0
+    synth_nbr: '0'
     osc_group: ''
     BoxLayout:
-        size_hint_x: .1
+        size_hint_x: .07
         padding: 5, 10
         spacing: 5, 10
         Volume:
+            widget_group: root.synth_nbr
             osc_group: root.osc_group
     GridLayout:
-        size_hint_x: .9
-        rows: 2
+        size_hint_x: .93
+        cols: 2
         padding: 10
         spacing: 10
         Operator:
             widget_label: 'MODULATOR'
+            widget_group: root.synth_nbr
             slider_type: 'feed'
             osc_group: root.osc_group
             sub_nbr: '1'
         Operator:
             widget_label: 'CARRIER'
+            widget_group: root.synth_nbr
             slider_type: 'mod'
             osc_group: root.osc_group
             sub_nbr: '2'
@@ -33,6 +45,7 @@
 <Operator@Group>:
     init_values: 1, 20, 80, 40, 10, 50, 50, 50, 0
     slider_type: ''
+    widget_group: '0'
     osc_group: ''
     sub_nbr: ''
     widget_color: .68, .71, .75
@@ -43,6 +56,7 @@
         Envelope:
             init_values: root.init_values[:4]
             size_hint_x: .5
+            widget_group: root.widget_group
             osc_group: root.osc_group
             sub_nbr: root.sub_nbr
         GridLayout:
@@ -55,41 +69,44 @@
                 osc_group: root.osc_group
                 sub_nbr: root.sub_nbr
                 slider_name: 'ratio_coarse'
+                widget_group: root.widget_group
                 widget_value: root.init_values[4]
-                widget_label: 'RATIO'
+                widget_label: 'MUL'
                 widget_color: .95, .69, .25
             RatioOffset:
                 osc_group: root.osc_group
                 sub_nbr: root.sub_nbr
                 slider_name: 'ratio_fine'
+                widget_group: root.widget_group
                 widget_value: root.init_values[5]
-                widget_label: 'ratio'
+                widget_label: 'mul'
                 widget_color: .95, .69, .25
             RatioOffset:
                 osc_group: root.osc_group
                 sub_nbr: root.sub_nbr
                 slider_name: 'offset_coarse'
+                widget_group: root.widget_group
                 widget_value: root.init_values[6]
-                widget_label: 'OFFSET'
+                widget_label: 'OFF'
                 widget_color: .98, .84, .63
             RatioOffset:
                 osc_group: root.osc_group
                 sub_nbr: root.sub_nbr
                 widget_value: root.init_values[7]
                 slider_name: 'offset_fine'
-                widget_label: 'offset'
+                widget_group: root.widget_group
+                widget_label: 'off'
                 widget_color: .98, .84, .63
         ModFeedback:
             slider_name: root.slider_type
             widget_label: root.slider_type
             widget_value: root.init_values[8]
+            widget_group: root.widget_group
             osc_group: root.osc_group
             sub_nbr: root.sub_nbr
             size_hint_x: .1
 
 <Volume@Vslider>:
-    osc_group: ''
-    sub_nbr: ''
     widget_value: 25
     widget_color: .18, .52, .75
     widget_name: 'vol'
@@ -123,5 +140,4 @@
     widget_width: 20
     widget_name: root.slider_name + '_' + root.sub_nbr
     widget_sensibility: 1
-    widget_label: 'off fn'
     osc_group: root.osc_group

@@ -4,3 +4,4 @@ from kivy.properties import StringProperty
 
 class Adsr(GridLayout):
     osc_group = StringProperty()
+    widget_group = StringProperty()
