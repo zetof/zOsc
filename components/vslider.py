@@ -1,13 +1,12 @@
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
-from kivy.properties import NumericProperty
-from kivy.properties import StringProperty
+from kivy.properties import StringProperty, NumericProperty
 
 
 class Vslider(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
-    widget_group = StringProperty()
+    widget_group = NumericProperty()
     osc_group = StringProperty()
 
     def on_touch_down(self, touch):

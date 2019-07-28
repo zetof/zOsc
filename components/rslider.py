@@ -6,7 +6,7 @@ from kivy.properties import StringProperty, NumericProperty
 class Rslider(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
-    widget_group = StringProperty()
+    widget_group = NumericProperty()
     widget_sensibility = NumericProperty()
     osc_group = StringProperty()
     last_y_cursor_value = 0

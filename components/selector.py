@@ -6,7 +6,7 @@ from kivy.properties import StringProperty, NumericProperty
 class Selector(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
-    widget_group = StringProperty()
+    widget_group = NumericProperty()
     widget_choices = NumericProperty()
     osc_group = StringProperty()
 

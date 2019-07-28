@@ -7,7 +7,7 @@ from kivy.clock import Clock
 class Pad(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
-    widget_group = StringProperty()
+    widget_group = NumericProperty()
     osc_group = StringProperty()
 
     def on_touch_down(self, touch):

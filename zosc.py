@@ -2,7 +2,6 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from client.osc import OscClient
 from kivy.lang import Builder
-from kivy.core.window import Window
 
 Builder.load_file('components/vslider.kv')
 Builder.load_file('components/hslider.kv')
@@ -20,10 +19,10 @@ class Synth(GridLayout):
     osc = OscClient('127.0.0.1', 57120)
 
     def set_used_widget(self, widget_name, widget_group):
-        self._current_used_widget = widget_name + '_' + widget_group
+        self._current_used_widget = widget_name + '_' + str(widget_group)
 
     def is_used_widget(self, widget_name, widget_group):
-        if self._current_used_widget == widget_name + '_' + widget_group:
+        if self._current_used_widget == widget_name + '_' + str(widget_group):
             return True
         else:
             return False

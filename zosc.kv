@@ -1,29 +1,48 @@
 <Synth>:
     osc_group: 'fm_synth'
     rows: 3
+    init_values: [1, 75], [0, 25], [0, 25]
     FmSynth:
-        synth_nbr: '1'
+        synth_nbr: 0
         osc_group: root.osc_group
+        init_values: root.init_values[0]
     FmSynth:
-        synth_nbr: '2'
+        synth_nbr: 1
         osc_group: root.osc_group
+        init_values: root.init_values[1]
     FmSynth:
-        synth_nbr: '3'
+        synth_nbr: 2
         osc_group: root.osc_group
+        init_values: root.init_values[2]
 
 <FmSynth@GridLayout>:
     cols: 2
     padding: 0
     spacing: 0
-    synth_nbr: '0'
+    synth_nbr: 0
     osc_group: ''
+    init_values: [0, .75]
     BoxLayout:
         size_hint_x: .07
-        padding: 5, 10
-        spacing: 5, 10
-        Volume:
-            widget_group: root.synth_nbr
-            osc_group: root.osc_group
+        padding: 5, 0
+        spacing: 5, 0
+        GridLayout:
+            padding: 0, 10
+            spacing: 0, 10
+            rows: 2
+            Toggle:
+                size_hint_y: .25
+                widget_name: 'on_off'
+                widget_label: 'ON'
+                widget_value: root.init_values[0]
+                widget_color: .9, .4, .2
+                widget_group: root.synth_nbr
+                osc_group: root.osc_group
+            Volume:
+                size_hint_y: .75
+                widget_value: root.init_values[1]
+                widget_group: root.synth_nbr
+                osc_group: root.osc_group
     GridLayout:
         size_hint_x: .93
         cols: 2
@@ -45,7 +64,7 @@
 <Operator@Group>:
     init_values: 1, 20, 80, 40, 10, 50, 50, 50, 0
     slider_type: ''
-    widget_group: '0'
+    widget_group: 0
     osc_group: ''
     sub_nbr: ''
     widget_color: .68, .71, .75

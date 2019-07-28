@@ -6,7 +6,7 @@ from kivy.properties import StringProperty, NumericProperty
 class Hslider(GridLayout):
     widget_name = StringProperty()
     widget_value = NumericProperty()
-    widget_group = StringProperty()
+    widget_group = NumericProperty()
     osc_group = StringProperty()
 
     def on_touch_down(self, touch):
